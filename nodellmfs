@@ -15,7 +15,7 @@ const index = VectorStoreIndex.fromDocuments([document]);
 const queryEngine = index.asQueryEngine();
 
 // Perform a query
-const query = "What is the meaning of life?";
+const query = "Wie warten?";
 queryEngine.query({ query }).then(response => {
     const assistantResponse = response.response;
     console.log(assistantResponse);
