@@ -2,7 +2,7 @@ const { Document, VectorStoreIndex, Settings, Groq } = require('llamaindex');
 
 // Load text content from a file
 const fs = require('fs');
-const filePath = 'path/to/your/text/file.txt';
+const filePath = 'https://waitgpt.de/longtextx.txt';
 const textContent = fs.readFileSync(filePath, 'utf-8');
 
 // Create document from text content
