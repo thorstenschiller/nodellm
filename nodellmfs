@@ -1,0 +1,24 @@
+const { Document, VectorStoreIndex, Settings, Groq } = require('llamaindex');
+
+// Load text content from a file
+const fs = require('fs');
+const filePath = 'path/to/your/text/file.txt';
+const textContent = fs.readFileSync(filePath, 'utf-8');
+
+// Create document from text content
+const document = new Document({ text: textContent, id_: 'my_text_file' });
+
+// Create index from document
+const index = VectorStoreIndex.fromDocuments([document]);
+
+// Get query engine from the index
+const queryEngine = index.asQueryEngine();
+
+// Perform a query
+const query = "What is the meaning of life?";
+queryEngine.query({ query }).then(response => {
+    const assistantResponse = response.response;
+    console.log(assistantResponse);
+}).catch(error => {
+    console.error('Error performing query:', error);
+});
