@@ -1,3 +1,32 @@
+const { exec } = require('child_process');
 
-import fs from "fs/promises";
-import { Document, VectorStoreIndex } from "llamaindex";
+// Function to check if Node.js is installed and running
+function checkNodeJS() {
+    try {
+        // Execute node command to check if Node.js is installed
+        exec('node -v', (error, stdout, stderr) => {
+            if (error) {
+                console.error('Node.js is not installed.');
+                return;
+            }
+            console.log(`Node.js version: ${stdout}`);
+        });
+    } catch (err) {
+        console.error('Error checking Node.js:', err);
+    }
+}
+
+// Function to check if llama-index module is installed
+function checkLlamaIndex() {
+    try {
+        // Try to require llama-index module
+        require('llama-index');
+        console.log('llama-index is installed.');
+    } catch (err) {
+        console.error('llama-index is not installed.');
+    }
+}
+
+// Call functions to check Node.js and llama-index
+checkNodeJS();
+checkLlamaIndex();
